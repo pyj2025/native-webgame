@@ -11,15 +11,15 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 export type RootStackParam = {
   Home: undefined;
-  Ggetmal: undefined;
   Gugudan: undefined;
+  Ggetmal: undefined;
   NumberBaseball: undefined;
   ResponseCheck: undefined;
   Rsp: undefined;
   Lotto: undefined;
   TicTacToe: undefined;
   MineSearch: undefined;
-  Test: undefined;
+  //   Test: undefined;
 };
 
 const Home = () => {
@@ -27,15 +27,15 @@ const Home = () => {
   var screenWidth = Dimensions.get('window').width;
 
   const buttons = [
-    'Ggetmal',
     'Gugudan',
+    'Ggetmal',
     'NumberBaseball',
     'ResponseCheck',
     'Rsp',
     'Lotto',
     'TicTacToe',
     'MineSearch',
-    'Test',
+    // 'Test',
   ];
 
   const renderButton = ({ item }: { item: string }) => (
