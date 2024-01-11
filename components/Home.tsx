@@ -12,7 +12,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 export type RootStackParam = {
   Home: undefined;
   Gugudan: undefined;
-  Ggetmal: undefined;
+  WordRelay: undefined;
   NumberBaseball: undefined;
   ResponseCheck: undefined;
   Rsp: undefined;
@@ -28,7 +28,7 @@ const Home = () => {
 
   const buttons = [
     'Gugudan',
-    'Ggetmal',
+    'WordRelay',
     'NumberBaseball',
     'ResponseCheck',
     'Rsp',
