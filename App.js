@@ -1,7 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from './components/Home';
-import Test from './components/Test';
 import Ggetmal from './components/Ggetmal';
 import Gugudan from './components/Gugudan';
 import NumberBaseball from './components/NumberBaseball';
@@ -10,8 +9,7 @@ import Rsp from './components/Rsp';
 import Lotto from './components/Lotto';
 import TicTacToe from './components/TicTacToe';
 import MineSearch from './components/MineSearch';
-import { Button } from 'react-native';
-import { HeaderBackButton } from '@react-navigation/stack';
+// import Test from './components/Test';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,7 +26,7 @@ export default function App() {
         <Stack.Screen name="Rsp" component={Rsp} />
         <Stack.Screen name="TicTacToe" component={TicTacToe} />
         <Stack.Screen name="MineSearch" component={MineSearch} />
-        <Stack.Screen name="Test" component={Test} />
+        {/* <Stack.Screen name="Test" component={Test} /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
