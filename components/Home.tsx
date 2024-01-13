@@ -24,7 +24,7 @@ export type RootStackParam = {
 
 const Home = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParam>>();
-  var screenWidth = Dimensions.get('window').width;
+  const screenWidth = Dimensions.get('window').width;
 
   const buttons = [
     'Gugudan',
