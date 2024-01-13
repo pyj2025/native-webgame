@@ -7,7 +7,7 @@ import NumberBaseball from './components/NumberBaseball';
 import ResponseCheck from './components/ResponseCheck';
 import Rsp from './components/Rsp';
 import Lotto from './components/Lotto';
-import TicTacToe from './components/TicTacToe';
+import TicTacToe from './components/TicTacToe/TicTacToe';
 import MineSearch from './components/MineSearch';
 // import Test from './components/Test';
 
