@@ -28,7 +28,7 @@ const Form: React.FC = () => {
   }, [row, cell, mine]);
 
   return (
-    <View>
+    <View style={{ marginTop: 10 }}>
       <View style={{ flexDirection: 'row' }}>
         <TextInput
           style={{

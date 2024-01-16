@@ -8,6 +8,7 @@ import {
   Dimensions,
 } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export type RootStackParam = {
   Home: undefined;
@@ -19,7 +20,6 @@ export type RootStackParam = {
   Lotto: undefined;
   TicTacToe: undefined;
   MineSearch: undefined;
-  //   Test: undefined;
 };
 
 const Home = () => {
@@ -27,15 +27,14 @@ const Home = () => {
   const screenWidth = Dimensions.get('window').width;
 
   const buttons = [
-    'Gugudan',
-    'WordRelay',
-    'NumberBaseball',
-    'ResponseCheck',
-    'Rsp',
-    'Lotto',
-    'TicTacToe',
     'MineSearch',
-    // 'Test',
+    'TicTacToe',
+    'Lotto',
+    'Rsp',
+    'ResponseCheck',
+    'NumberBaseball',
+    'WordRelay',
+    'Gugudan',
   ];
 
   const renderButton = ({ item }: { item: string }) => (
@@ -44,12 +43,12 @@ const Home = () => {
       onPress={() => navigation.push(item as any)}
     >
       <Text style={styles.buttonText}>{item}</Text>
+      <Icon name="chevron-right" size={20} style={styles.buttonIcon} />
     </TouchableOpacity>
   );
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>HomeScreen</Text>
       <FlatList
         data={buttons}
         renderItem={renderButton}
@@ -69,28 +68,30 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  title: {
-    color: 'black',
-    fontSize: 30,
-    marginBottom: 20,
-  },
   buttonList: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
   button: {
+    backgroundColor: '#f0f0f0',
+    flexDirection: 'row',
     borderWidth: 1,
-    borderColor: 'gray',
     paddingVertical: 20,
     borderRadius: 10,
-    backgroundColor: '#3498db',
-    marginBottom: 20,
+    marginBottom: 16,
+    borderColor: 'black',
   },
   buttonText: {
-    fontSize: 18,
+    fontSize: 16,
+    flex: 8,
     textAlign: 'center',
-    color: 'white',
+    color: 'black',
+  },
+  buttonIcon: {
+    flex: 2,
+    textAlign: 'center',
+    color: 'gray',
   },
 });
 
