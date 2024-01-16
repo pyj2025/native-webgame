@@ -30,12 +30,24 @@ const MineSearch: React.FC = () => {
   return (
     <TableContext.Provider value={value}>
       <Form />
-      <View>
-        <Text>{timer}</Text>
+      <View
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginVertical: 20,
+        }}
+      >
+        <Text style={{ fontSize: 24 }}>Timer: {timer}</Text>
       </View>
       <Table />
-      <View>
-        <Text>{result}</Text>
+      <View
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginTop: 20,
+        }}
+      >
+        <Text style={{ fontSize: 16 }}>{result}</Text>
       </View>
     </TableContext.Provider>
   );

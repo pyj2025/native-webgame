@@ -1,4 +1,8 @@
+import { useNavigation } from "@react-navigation/native";
 import { ActionType, CLICK_MINE, CODE, CellData, FLAG_CELL, INCREMENT_TIMER, NORMALIZE_CELL, OPEN_CELL, QUESTION_CELL, START_GAME } from "./type";
+import { Alert } from 'react-native';
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParam } from "../Home";
 
 export type State = {
     tableData: number[][];
@@ -11,7 +15,7 @@ export type State = {
 
 const plantMine = (row: number, cell: number, mine: number): number[][] => {
     const candidate = Array(row * cell)
-      .fill(0)
+      .fill(-1)
       .map((arr, i) => {
         return i;
       });
@@ -63,7 +67,7 @@ export const reducer = (state: State, action: ActionType): State => {
         });
         const checked: string[] = [];
         let openedCount = 0;
-        console.log(tableData.length, tableData[0].length);
+        // console.log(tableData.length, tableData[0].length);
         const checkAround = (row: number, cell: number) => {
           console.log(row, cell);
           if (
@@ -73,7 +77,7 @@ export const reducer = (state: State, action: ActionType): State => {
             cell >= tableData[0].length
           ) {
             return;
-          } // 상하좌우 없는칸은 안 열기
+          }
           if (
             [
               CODE.OPENED,
@@ -84,12 +88,12 @@ export const reducer = (state: State, action: ActionType): State => {
             ].includes(tableData[row][cell])
           ) {
             return;
-          } // 닫힌 칸만 열기
+          } 
           if (checked.includes(row + '/' + cell)) {
             return;
           } else {
             checked.push(row + '/' + cell);
-          } // 한 번 연칸은 무시하기
+          } 
           let around = [tableData[row][cell - 1], tableData[row][cell + 1]];
           if (tableData[row - 1]) {
             around = around.concat([
@@ -109,7 +113,6 @@ export const reducer = (state: State, action: ActionType): State => {
             return [CODE.MINE, CODE.FLAG_MINE, CODE.QUESTION_MINE].includes(v);
           }).length;
           if (count === 0) {
-            // 주변칸 오픈
             if (row > -1) {
               const near = [];
               if (row - 1 > -1) {
@@ -132,7 +135,6 @@ export const reducer = (state: State, action: ActionType): State => {
             }
           }
           if (tableData[row][cell] === CODE.NORMAL) {
-            // 내 칸이 닫힌 칸이면 카운트 증가
             openedCount += 1;
           }
           tableData[row][cell] = count;
@@ -149,9 +151,17 @@ export const reducer = (state: State, action: ActionType): State => {
           state.data.row * state.data.cell - state.data.mine ===
           state.openedCount + openedCount
         ) {
-          // 승리
           halted = true;
-          result = `${state.timer}초만에 승리하셨습니다`;
+          result = `Congratulation. You win in ${state.timer} seconds`;
+          const navigation = useNavigation<NativeStackNavigationProp<RootStackParam>>();
+
+          Alert.alert('Win', result, [
+            {
+              text: 'OK',
+              onPress: () => navigation.goBack(),
+              style: 'cancel',
+            },
+          ]);
         }
         return {
           ...state,

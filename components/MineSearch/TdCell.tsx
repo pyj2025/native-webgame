@@ -34,9 +34,8 @@ const getTdStyle = (code: number) => {
 const getTdText = (code: number) => {
   switch (code) {
     case CODE.NORMAL:
-      return '';
     case CODE.MINE:
-      return 'X';
+      return '';
     case CODE.CLICKED_MINE:
       return 'M';
     case CODE.FLAG_MINE:
@@ -54,12 +53,26 @@ type RealTdProps = {
   onClickTd: () => void;
   onRightClickTd: () => void;
   data: number;
+  cellSize: number;
 };
 
-const TdCell: React.FC<RealTdProps> = ({ onClickTd, onRightClickTd, data }) => {
+const TdCell: React.FC<RealTdProps> = ({
+  onClickTd,
+  onRightClickTd,
+  data,
+  cellSize,
+}) => {
   return (
     <TouchableOpacity
-      style={getTdStyle(data)}
+      style={{
+        ...getTdStyle(data),
+        width: cellSize,
+        height: cellSize,
+        borderColor: 'grey',
+        borderWidth: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
       onPress={onClickTd}
       onLongPress={onRightClickTd}
     >

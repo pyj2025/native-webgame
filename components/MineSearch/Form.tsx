@@ -1,9 +1,11 @@
 import React from 'react';
-import { View, TextInput, Button } from 'react-native';
+import { View, TextInput, Button, Dimensions } from 'react-native';
 import { START_GAME } from './type';
 import { TableContext, TableContextProps } from './context';
 
 const Form: React.FC = () => {
+  const screenWidth = Dimensions.get('window').width;
+
   const [row, setRow] = React.useState<number>(10);
   const [cell, setCell] = React.useState<number>(10);
   const [mine, setMine] = React.useState<number>(20);
@@ -27,43 +29,48 @@ const Form: React.FC = () => {
 
   return (
     <View>
-      <TextInput
-        style={{
-          height: 40,
-          borderColor: 'gray',
-          borderWidth: 1,
-          marginBottom: 8,
-        }}
-        keyboardType="numeric"
-        placeholder="세로"
-        value={row.toString()}
-        onChangeText={onChangeRow}
-      />
-      <TextInput
-        style={{
-          height: 40,
-          borderColor: 'gray',
-          borderWidth: 1,
-          marginBottom: 8,
-        }}
-        keyboardType="numeric"
-        placeholder="가로"
-        value={cell.toString()}
-        onChangeText={onChangeCell}
-      />
-      <TextInput
-        style={{
-          height: 40,
-          borderColor: 'gray',
-          borderWidth: 1,
-          marginBottom: 8,
-        }}
-        keyboardType="numeric"
-        placeholder="지뢰"
-        value={mine.toString()}
-        onChangeText={onChangeMine}
-      />
-      <Button title="시작" onPress={onClickBtn} />
+      <View style={{ flexDirection: 'row' }}>
+        <TextInput
+          style={{
+            width: screenWidth / 3,
+            height: 40,
+            borderColor: 'gray',
+            borderWidth: 1,
+            marginBottom: 8,
+          }}
+          keyboardType="numeric"
+          placeholder="Row"
+          value={row.toString()}
+          onChangeText={onChangeRow}
+        />
+        <TextInput
+          style={{
+            width: screenWidth / 3,
+            height: 40,
+            borderColor: 'gray',
+            borderWidth: 1,
+            marginBottom: 8,
+          }}
+          keyboardType="numeric"
+          placeholder="Column"
+          value={cell.toString()}
+          onChangeText={onChangeCell}
+        />
+        <TextInput
+          style={{
+            width: screenWidth / 3,
+            height: 40,
+            borderColor: 'gray',
+            borderWidth: 1,
+            marginBottom: 8,
+          }}
+          keyboardType="numeric"
+          placeholder="Mine"
+          value={mine.toString()}
+          onChangeText={onChangeMine}
+        />
+      </View>
+      <Button title="Start" onPress={onClickBtn} />
     </View>
   );
 };

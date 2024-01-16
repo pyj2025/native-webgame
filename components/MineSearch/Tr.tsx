@@ -11,7 +11,11 @@ const Tr: React.FC<TrProps> = ({ rowIndex }) => {
   const { tableData } = React.useContext<TableContextProps>(TableContext);
 
   return (
-    <View style={{ flexDirection: 'row' }}>
+    <View
+      style={{
+        flexDirection: 'row',
+      }}
+    >
       {tableData[0] &&
         tableData[0].map((_, cellIndex) => (
           <Td key={cellIndex} rowIndex={rowIndex} cellIndex={cellIndex} />

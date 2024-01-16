@@ -9,6 +9,10 @@ import {
   QUESTION_CELL,
 } from './type';
 import { TableContext, TableContextProps } from './context';
+import { Alert, Dimensions } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParam } from '../Home';
 
 type TdProps = {
   rowIndex: number;
@@ -18,6 +22,9 @@ type TdProps = {
 const Td: React.FC<TdProps> = ({ rowIndex, cellIndex }) => {
   const { tableData, dispatch, halted } =
     React.useContext<TableContextProps>(TableContext);
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParam>>();
+
+  const screenWidth = Dimensions.get('window').width;
 
   const onClickTd = React.useCallback(() => {
     if (halted) {
@@ -35,6 +42,13 @@ const Td: React.FC<TdProps> = ({ rowIndex, cellIndex }) => {
         return;
       case CODE.MINE:
         dispatch({ type: CLICK_MINE, row: rowIndex, cell: cellIndex });
+        Alert.alert('Lose', 'You clicked mine.', [
+          {
+            text: 'OK',
+            onPress: () => navigation.goBack(),
+            style: 'cancel',
+          },
+        ]);
         return;
       default:
         return;
@@ -68,6 +82,7 @@ const Td: React.FC<TdProps> = ({ rowIndex, cellIndex }) => {
       onClickTd={onClickTd}
       onRightClickTd={onRightClickTd}
       data={tableData[rowIndex][cellIndex]}
+      cellSize={(screenWidth - 30) / tableData[0].length}
     />
   );
 };

@@ -7,7 +7,12 @@ const Table: React.FC = () => {
   const { tableData } = React.useContext<TableContextProps>(TableContext);
 
   return (
-    <View>
+    <View
+      style={{
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
       {tableData.map((rowData, rowIndex) => (
         <Tr key={rowIndex} rowIndex={rowIndex} />
       ))}
