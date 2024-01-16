@@ -1,4 +1,4 @@
-# Project Title: Multi-Game App
+# Project Title: Native Web Game
 
 ## Description
 This application is a haven for game lovers, featuring a variety of engaging games. With our Multi-Game App, you can enjoy a medley of different games all in one place. Here's a brief overview of the games included:
