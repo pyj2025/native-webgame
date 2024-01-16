@@ -67,7 +67,7 @@ const NumberBaseball = () => {
       let strike = 0;
       let ball = 0;
       if (tries.length >= 9) {
-        setResult(`Lose. Ansert = ${answer.join(',')}!`); // state set은 비동기
+        setResult(`Lose. Answer = ${answer.join(',')}!`);
         createAlert('Lose');
         reset();
       } else {
